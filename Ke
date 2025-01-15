@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KelyProxy</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            background: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?fit=crop&w=1350&q=80') no-repeat center center fixed;
+            background-size: cover;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+        }
+        input[type="text"], button {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        input[type="text"] {
+            background: #222;
+            color: white;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>KelyProxy</h1>
+        <p>Enter the URL you want to visit below:</p>
+        <input type="text" id="urlInput" placeholder="https://example.com">
+        <button onclick="redirect()">Go</button>
+    </div>
+    <script>
+        function redirect() {
+            const urlInput = document.getElementById("urlInput").value.trim();
+            if (urlInput) {
+                // Ensure the URL starts with http:// or https://
+                const formattedUrl = urlInput.startsWith("http://") || urlInput.startsWith("https://")
+                    ? urlInput
+                    : `https://${urlInput}`;
+                window.location.href = `https://cors-anywhere.herokuapp.com/${formattedUrl}`;
+            } else {
+                alert("Please enter a valid URL!");
+            }
+        }
+    </script>
+</body>
+</html>
